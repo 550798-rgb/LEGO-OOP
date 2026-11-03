@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4770423288707100635}
-  - component: {fileID: 4569594089140508979}
   m_Layer: 0
   m_Name: 3678
   m_TagString: Untagged
@@ -91,7 +90,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7822132709615471247}
-  - component: {fileID: 6389919320421332933}
   m_Layer: 0
   m_Name: Connectivity
   m_TagString: Untagged
@@ -172,7 +170,6 @@ GameObject:
   - component: {fileID: 1128107947260700837}
   - component: {fileID: 917869358005480300}
   - component: {fileID: 6626695401014073920}
-  - component: {fileID: 8004367620139304436}
   m_Layer: 0
   m_Name: knob_01_D
   m_TagString: Untagged
@@ -301,7 +298,6 @@ GameObject:
   - component: {fileID: 7830508815923454342}
   - component: {fileID: 4555112430717064639}
   - component: {fileID: 1743525643579690820}
-  - component: {fileID: 6160586096598715863}
   m_Layer: 0
   m_Name: knob_01_D
   m_TagString: Untagged
@@ -416,7 +412,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6040511210954381529}
-  - component: {fileID: 6240642254101099364}
   - component: {fileID: 2881431393583044384}
   m_Layer: 12
   m_Name: Custom2DField
@@ -507,7 +502,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3859176577503360397}
-  - component: {fileID: 6778477440922679825}
   - component: {fileID: 5880503803466189998}
   m_Layer: 13
   m_Name: Custom2DField
@@ -553,7 +547,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3666689766760505922}
-  - component: {fileID: 7488630107027585178}
   m_Layer: 0
   m_Name: Colliders
   m_TagString: Untagged
@@ -672,10 +665,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1439917745627681243}
-  - component: {fileID: 2383870390521900697}
-  - component: {fileID: 2772477700294781274}
-  - component: {fileID: 8175517398384801939}
-  - component: {fileID: 8745819524201585421}
   - component: {fileID: 4771025786727623321}
   - component: {fileID: 5970021948860584049}
   m_Layer: 0
@@ -793,10 +782,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545102889450336365}
-  - component: {fileID: 6360375778421949837}
-  - component: {fileID: 6738659922150043194}
-  - component: {fileID: 8435984399601826463}
-  - component: {fileID: 7261536802895646819}
   m_Layer: 0
   m_Name: 3678
   m_TagString: Untagged
