@@ -1,0 +1,22 @@
+{
+  "name": "com.unity.lego.materials",
+  "displayName": "LEGO Materials",
+  "version": "3.0.1",
+  "unity": "2021.2",
+  "unityRelease": "7f1",
+  "description": "A complete library of all past and current LEGO Materials used in the physical sets.",
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "12.1.2"
+  },
+  "upm": {
+    "changelog": "### Fixed\n- Added the missing Titanium Ink (337) legacy material using the existing colour guide and ink material settings.\n- Removed the unused Git LFS requirement; package assets are stored directly in Git.\n- Removed an editor-only import from the runtime assembly to allow player builds.\n- Fixed excluding and restoring Bright Yellow in the colour picker.\n- Prevented division by zero when the colour picker is narrower than one column."
+  },
+  "upmCi": {
+    "footprint": ""
+  },
+  "repository": {
+    "url": "https://github.com/ESCG-Lewes/com.unity.lego.materials.git",
+    "type": "git",
+    "revision": ""
+  }
+}

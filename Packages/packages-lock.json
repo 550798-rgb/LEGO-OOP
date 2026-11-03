@@ -289,11 +289,10 @@
       "url": "https://packages.unity.com"
     },
     "com.xarbrough.commentcomponent": {
-      "version": "https://github.com/chrisyarbrough/comment-component.git",
+      "version": "file:comment-component",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "ffc65a19723b209f56f9e1be1b240b8b71acf38b"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

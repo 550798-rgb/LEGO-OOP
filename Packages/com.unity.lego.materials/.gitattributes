@@ -1,0 +1,3 @@
+# Assets are stored directly in Git; this package does not require Git LFS.
+*.cs whitespace=cr-at-eol
+*.md whitespace=cr-at-eol
