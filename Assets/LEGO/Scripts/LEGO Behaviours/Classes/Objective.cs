@@ -57,7 +57,8 @@ namespace Unity.LEGO.Behaviours
             }
             else
             {
-                Activate();
+                // An unwired objective must not complete as soon as the scene starts.
+                Debug.LogWarning($"Objective '{m_Title}' on '{gameObject.name}' has no trigger and will remain pending. Connect a trigger to complete it.", this);
             }
         }
 
