@@ -28,6 +28,7 @@ namespace LEGOModelImporter
             public Matrix4x4 transformation; // Only output one bone per part.
             public string designID;
             public string materialID;
+            public string studioPart;
         }
 
         private class AssemblyPart
@@ -63,6 +64,7 @@ namespace LEGOModelImporter
 
         private static Dictionary<string, string> LDrawMaterialToLEGOMaterial;
         private static Dictionary<string, string> LDrawBrickToLEGOBrick;
+        private static Dictionary<string, string> StudioPartAliases;
         private static Dictionary<string, Matrix4x4> LDrawBrickToTransformation;
         private static Dictionary<string, List<AssemblyPart>> LDrawAssembly;
 
@@ -105,7 +107,7 @@ namespace LEGOModelImporter
             missingTransformations = new List<string>();
 
             // Read LDraw to LXFML mapping file.
-            var mappingText = File.ReadAllText("Packages/com.unity.lego.modelimporter/Data/ldraw.xml");
+            var mappingText = File.ReadAllText(Path.Combine(PartUtility.packageDataPath, "ldraw.xml"));
             var mappingXml = new XmlDocument();
             mappingXml.LoadXml(mappingText);
             var mappingRoot = mappingXml.DocumentElement;
@@ -119,6 +121,12 @@ namespace LEGOModelImporter
                     Debug.LogWarning($"Duplicate material mapping: {materialNode.Attributes["ldraw"].Value}. Overwriting old value {LDrawMaterialToLEGOMaterial[materialNode.Attributes["ldraw"].Value]}");
                 }
                 LDrawMaterialToLEGOMaterial[materialNode.Attributes["ldraw"].Value] = materialNode.Attributes["lego"].Value;
+            }
+
+            StudioPartAliases = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (XmlElement alias in mappingRoot.SelectNodes("StudioPartAlias"))
+            {
+                StudioPartAliases[alias.GetAttribute("ldraw")] = alias.GetAttribute("part");
             }
 
             LDrawBrickToLEGOBrick = new Dictionary<string, string>();
@@ -183,7 +191,7 @@ namespace LEGOModelImporter
             }
 
             // Read LDraw assembly mapping file.
-            var assemblyMappingText = File.ReadAllText("Packages/com.unity.lego.modelimporter/Data/ldrawassembly.xml");
+            var assemblyMappingText = File.ReadAllText(Path.Combine(PartUtility.packageDataPath, "ldrawassembly.xml"));
             var assemblyMappingXml = new XmlDocument();
             assemblyMappingXml.LoadXml(assemblyMappingText);
             var assemblyMappingRoot = assemblyMappingXml.DocumentElement;
@@ -358,7 +366,7 @@ namespace LEGOModelImporter
                 }
 
                 // Check if this line references a brick or a submodel.
-                if (tokens.Length == 15 && tokens[14].EndsWith(".dat", StringComparison.InvariantCulture))
+                if (tokens.Length == 15 && tokens[14].EndsWith(".dat", StringComparison.OrdinalIgnoreCase))
                 {
                     // ------
                     // Brick.
@@ -366,7 +374,7 @@ namespace LEGOModelImporter
 
                     var brick = new Brick();
 
-                    var ldrawID = tokens[14];
+                    var ldrawID = tokens[14].ToLowerInvariant();
 
                     // Naming convention found at: https://www.bricklink.com/help.asp?helpID=168
 
@@ -377,7 +385,7 @@ namespace LEGOModelImporter
                     var assemblySplit = Regex.Split(fullName, "(c[0-9]+)");
 
                     // 3. If something was peeled off, it is an assembly, so process each of the parts directly.
-                    if (assemblySplit.Length > 1)
+                    if (assemblySplit.Length > 1 && !StudioPartBundles.Contains(ldrawID))
                     {
                         if (LDrawAssembly.ContainsKey(ldrawID))
                         {
@@ -497,6 +505,28 @@ namespace LEGOModelImporter
                 legacyMaterials.Add($"Brick ID {ldrawID}\tMaterial ID {materialID}");
             }
 
+            var studioPart = ldrawID + ".dat";
+            if (StudioPartAliases.TryGetValue(studioPart, out var canonicalPart))
+            {
+                studioPart = canonicalPart;
+            }
+
+            if (StudioPartBundles.Contains(studioPart))
+            {
+                // Keep the LDraw origin. The FBX was generated in the same coordinate system.
+                var numericPrefix = Regex.Match(studioPart, @"^\d+").Value;
+                var studioDesignID = int.TryParse(numericPrefix, out var numericID) ? numericID.ToString() : "0";
+                brick.parts.Add(new Part
+                {
+                    transformation = transformation,
+                    designID = studioDesignID,
+                    materialID = materialID,
+                    studioPart = studioPart
+                });
+                brick.designID = studioDesignID;
+                return;
+            }
+
             // 1. Peel off anything from 'p' onwards and check if it includes a number. (Pattern constant + pattern sequential #)
             var patternSplit = Regex.Split(ldrawID, "(p[a-z]*[0-9]*)");
 
@@ -612,6 +642,10 @@ namespace LEGOModelImporter
                     var part = doc.CreateElement("Part");
                     part.SetAttribute("refID", currentPartRefId.ToString());
                     part.SetAttribute("designID", submodelPart.designID + ";A"); // Assume first version.
+                    if (submodelPart.studioPart != null)
+                    {
+                        part.SetAttribute("studioPart", submodelPart.studioPart);
+                    }
                     part.SetAttribute("materials", submodelPart.materialID + ":0"); // Assume Shiny Plastic shaderId.
                     brick.AppendChild(part);
 
