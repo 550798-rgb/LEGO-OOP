@@ -3458,6 +3458,7 @@ GameObject:
   - component: {fileID: 238724071581041492}
   - component: {fileID: 6743342283207519057}
   - component: {fileID: 3338621560918125283}
+  - component: {fileID: 418125866186012297}
   - component: {fileID: 751463835941352700}
   - component: {fileID: 8408039699643802797}
   - component: {fileID: 5030400000410333108}
@@ -3744,6 +3745,34 @@ MonoBehaviour:
   - {fileID: 0}
   headGeometry: {fileID: 0}
   faceGeometry: {fileID: 0}
+--- !u!114 &418125866186012297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831803188609404251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5441e22362542c09dd4549acc826b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceTag: Face
+  face: {fileID: 0}
+  framesPerSecond: 4
+  defaultTexture: {fileID: 2800000, guid: ab78d67de763a4e53ad8adbad803d574, type: 3}
+  animations: 0000000001000000
+  animationData:
+  - textures:
+    - {fileID: 2800000, guid: 59cd9d41d8b5c4db4a39014e008af9cf, type: 3}
+    - {fileID: 2800000, guid: 59cd9d41d8b5c4db4a39014e008af9cf, type: 3}
+    - {fileID: 2800000, guid: 59cd9d41d8b5c4db4a39014e008af9cf, type: 3}
+    - {fileID: 2800000, guid: 59cd9d41d8b5c4db4a39014e008af9cf, type: 3}
+  - textures:
+    - {fileID: 2800000, guid: 4d4d0ab7eb1a44abc83ebb7e5e3c0fc1, type: 3}
+    - {fileID: 2800000, guid: 4d4d0ab7eb1a44abc83ebb7e5e3c0fc1, type: 3}
+    - {fileID: 2800000, guid: 4d4d0ab7eb1a44abc83ebb7e5e3c0fc1, type: 3}
+    - {fileID: 2800000, guid: 4d4d0ab7eb1a44abc83ebb7e5e3c0fc1, type: 3}
 --- !u!114 &751463835941352700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3780,7 +3809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd594e86ac83c64f9adccbdd60e114e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Add the 'LEGO MiniFigure Asset' script to complete.
+  text: Add the 'LEGO MiniFigure Asset' to complete.
   iconType: 0
 --- !u!1 &3831803188625037614
 GameObject:
