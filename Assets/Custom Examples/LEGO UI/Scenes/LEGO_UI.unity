@@ -15265,8 +15265,7 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.058965903
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 890440930, guid: 422c298e5edde4efeb679ddef8883c33, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 422c298e5edde4efeb679ddef8883c33, type: 3}
 --- !u!4 &156004630 stripped
 Transform:
@@ -30176,14 +30175,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownSpeed: 10
   recoverySpeed: 5
-  m_MinifigController: {fileID: 890440945}
   healthPanel: {fileID: 1547953480}
   countdownText: {fileID: 348031538}
   healthBar: {fileID: 212396800}
-  currentHealth: 100
   warningPanel: {fileID: 1807065585}
   warningPanelText: {fileID: 2125077815}
-  message: DANGER
+  message: HELP
   warningImage: {fileID: 1491270872}
   warningIcon: {fileID: 21300000, guid: 88b6be54fafc14466988e2ebe7f13eeb, type: 3}
 --- !u!136 &316073613
@@ -70947,8 +70944,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711522925}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000061035156, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85881,18 +85878,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 156004629}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &890440945 stripped
+--- !u!114 &890440930
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4124099547456060602, guid: 422c298e5edde4efeb679ddef8883c33,
-    type: 3}
-  m_PrefabInstance: {fileID: 156004629}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890440916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 652629fecff6a4c8fa0a985e628de942, type: 3}
+  m_Script: {fileID: 11500000, guid: 379d6e0cba8354331aae83e1d3498ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceTag: Face
+  face: {fileID: 0}
+  framesPerSecond: 24
+  defaultTexture: {fileID: 0}
+  voiceAnimations:
+  - animationClip: {fileID: 7400000, guid: b43d63dbf204c4a7e96c868a34f8928e, type: 2}
+    audioClip: {fileID: 8300000, guid: 860a928640c0fe447be9f1e4b0a019b7, type: 3}
+    frames: []
+  - animationClip: {fileID: 7400000, guid: 040b77355077b4a859cfcf326943cf2b, type: 2}
+    audioClip: {fileID: 8300000, guid: 684e3e0fdd61f4921bdb1fbf4b36ffb2, type: 3}
+    frames: []
+  - animationClip: {fileID: 7400000, guid: 8d35e45d83204403b9c235e969806cb9, type: 2}
+    audioClip: {fileID: 8300000, guid: 684e3e0fdd61f4921bdb1fbf4b36ffb2, type: 3}
+    frames: []
 --- !u!1 &892872862
 GameObject:
   m_ObjectHideFlags: 0
@@ -177003,7 +177014,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -10
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1754192703
 GameObject:
@@ -213729,11 +213740,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoinsImage
-      objectReference: {fileID: 0}
-    - target: {fileID: 6737455501087868701, guid: 30881f502f0324c5c9d3293bacda1529,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6737455501087868703, guid: 30881f502f0324c5c9d3293bacda1529,
         type: 3}

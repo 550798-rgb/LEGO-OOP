@@ -4371,6 +4371,28 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 423978717}
     m_Modifications:
+    - target: {fileID: 1773018557833402797, guid: e608997e056a54c1c97457f894c6d805,
+        type: 3}
+      propertyPath: sceneName
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264485099695685510, guid: e608997e056a54c1c97457f894c6d805,
+        type: 3}
+      propertyPath: m_text
+      value: Play Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264485099695685510, guid: e608997e056a54c1c97457f894c6d805,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a14e522e426f5472a8c9710aa5b252b7,
+        type: 2}
+    - target: {fileID: 2264485099695685510, guid: e608997e056a54c1c97457f894c6d805,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6656905189396515994, guid: a14e522e426f5472a8c9710aa5b252b7,
+        type: 2}
     - target: {fileID: 3892568232340776081, guid: e608997e056a54c1c97457f894c6d805,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

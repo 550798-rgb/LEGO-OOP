@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +8,6 @@ namespace Unity.LEGO.UI
     {
         public GameObject player; // Reference to the player GameObject
         public GameObject uiTarget; // Reference to the UI GameObject (target position)
-        /*
-        Make sure the uiTarget canvas has a negative sorting layer so it sits behind the default UI
-        */
         public GameObject coin2DPrefab; // Reference to the 2D coin prefab
         public float StartSpeed = 45; // Initial speed for SmoothDamp
         public float EndSpeed = 35; // Final speed for SmoothDamp
@@ -66,8 +62,6 @@ namespace Unity.LEGO.UI
 
             // Disable the 3D coin
             gameObject.SetActive(false);
-
-            
         }
 
 
@@ -86,8 +80,6 @@ namespace Unity.LEGO.UI
             }
         }
 
-
-
         private void CreateAndMove2DCoin()
         {
             // Convert the 3D coin's position to screen space
@@ -99,19 +91,19 @@ namespace Unity.LEGO.UI
             // Set its initial position and scale
             RectTransform rectTransform = new2DCoin.GetComponent<RectTransform>();
             rectTransform.position = screenPosition;
+
+            // Ensure the scale matches the Canvas
             rectTransform.localScale = Vector3.one;
 
+
             new2DCoin.SetActive(true);
-            
-            DeleteCoin(new2DCoin);
 
+
+           
         }
 
-        private void DeleteCoin(GameObject coin)
-        {
-            //Debug.Log("Deleting " + coin.name + " after 2 seconds.");
-            Destroy(coin, 2f);
-        }
-       
+
     }
+  
+  
 }

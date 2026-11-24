@@ -1,10 +1,7 @@
-using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; // Import TextMeshPro namespace
 using System.Collections;
-using Unity.LEGO.Minifig;
-using Unity.LEGO.Game;
 
 public class CountdownAndHealthBar : MonoBehaviour
 {
@@ -12,14 +9,10 @@ public class CountdownAndHealthBar : MonoBehaviour
     public float countdownSpeed = 1f; // Speed of the countdown (value decrease per second)
     public float recoverySpeed = 10f; // Speed of the health bar recovery (value increase per second)
 
-    [SerializeField]
-    public MinifigController m_MinifigController;
-
     [Header("Health Panel")]
     public GameObject healthPanel; // The health UI Canvas object
     public TextMeshProUGUI countdownText; // The TextMeshPro field in the health UI
     public Slider healthBar; // The health bar slider
-    public float currentHealth = 100f; // Current health value
 
     [Header("Warning Panel")]
     public GameObject warningPanel; // The warning UI Canvas object
@@ -28,15 +21,13 @@ public class CountdownAndHealthBar : MonoBehaviour
     public Image warningImage; // Image in the warning UI
     public Sprite warningIcon; // Sprite to set for the warning image in the Inspector
 
-    
+    private float currentHealth = 100f; // Current health value
     private bool playerInside = false; // Is the player touching the object?
     private bool hasLost = false; // Flag to ensure Lose() is only called once
     private Coroutine warningCoroutine; // Coroutine for delaying warning panel
 
-
     private void Start()
     {
-        
         if (warningPanelText != null)
             warningPanelText.text = message;
 
@@ -45,7 +36,7 @@ public class CountdownAndHealthBar : MonoBehaviour
 
         if (healthPanel != null)
             healthPanel.SetActive(false); // Ensure the canvas is hidden at start
-       
+        currentHealth = 100f; // Initialize health to full
     }
 
     private void Update()
@@ -88,7 +79,6 @@ public class CountdownAndHealthBar : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure the collider belongs to the player
         {
             playerInside = true;
-            Debug.Log("hit" + playerInside);
 
             if (healthPanel != null && !healthPanel.activeSelf)
                 healthPanel.SetActive(true); // Show the health panel
@@ -117,7 +107,6 @@ public class CountdownAndHealthBar : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = false;
-            Debug.Log("hit" + playerInside);
 
             if (warningPanel != null)
             {
@@ -140,25 +129,5 @@ public class CountdownAndHealthBar : MonoBehaviour
     {
         Debug.Log("You Lose!"); // Log for debugging; replace with actual lose logic
         // Add your lose logic here, e.g., load a "Game Over" scene or show a lose UI
-
-        m_MinifigController.Explode();
-
-        GameOverEvent evt = Events.GameOverEvent;
-        evt.Win = false;
-        EventManager.Broadcast(evt);
-
-    }
-
-    private void Win()
-    {
-        Debug.Log("You Win!"); // Log for debugging; replace with actual win logic
-        // Add your win logic here, e.g., load a "Game Over" scene or show a win UI
-
-        m_MinifigController.SpecialAnimationFinished();
-
-        GameOverEvent evt = Events.GameOverEvent;
-        evt.Win = true;
-        EventManager.Broadcast(evt);
-
     }
 }

@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/LEGO Game/MenuStory.unity
     guid: c15b9284274435740ab9a58f9a53e627
+  - enabled: 1
+    path: Assets/LEGO Game/Level 1.unity
+    guid: be0813bf4658f734e8a51f19f62080dc
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ca76dcc7e0aef4b308179401bd5ac214,
       type: 2}
