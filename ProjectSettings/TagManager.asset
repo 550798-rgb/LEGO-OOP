@@ -12,6 +12,7 @@ TagManager:
   - DropZone
   - Enemy
   - Coin
+  - Ground
   layers:
   - Default
   - TransparentFX
